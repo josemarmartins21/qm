@@ -1,0 +1,40 @@
+<?php
+include "../config/database.php";
+include "../layout/header.php";
+
+$sql = "SELECT f.*, c.primeiro_nome 
+        FROM faturas f
+        JOIN client c ON c.client_id = f.client_id";
+$result = $qmanager->query($sql);
+?>
+
+<h4 class="fw-bold mb-3">Faturas</h4>
+
+<table class="table table-striped shadow bg-white">
+<tr>
+<th>Cliente</th><th>Valor</th><th>Vencimento</th><th>Status</th><th>Ação</th>
+</tr>
+
+<?php while($f = $result->fetch_assoc()): ?>
+<tr>
+<td><?= $f['primeiro_nome'] ?></td>
+<td><?= number_format($f['valor'],2,',','.') ?> Kz</td>
+<td><?= $f['data_vencimento'] ?></td>
+<td>
+<span class="badge bg-<?= 
+$f['status']=='paga'?'success':($f['status']=='vencida'?'danger':'warning') ?>">
+<?= ucfirst($f['status']) ?>
+</span>
+</td>
+<td>
+<?php if($f['status']!='paga'): ?>
+<a href="pay.php?id=<?= $f['fatura_id'] ?>" class="btn btn-success btn-sm">
+Pagar
+</a>
+<?php endif; ?>
+</td>
+</tr>
+<?php endwhile; ?>
+</table>
+
+<?php include "../layout/footer.php"; ?>

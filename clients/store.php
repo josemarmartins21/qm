@@ -1,5 +1,5 @@
 <?php
-include "../config/database.php";
+include __DIR__ ."/../config/database.php";
 include_once __DIR__ ."/../validators/input-validators.php";
 
 $password_hash = password_hash($_POST['password'], PASSWORD_DEFAULT);

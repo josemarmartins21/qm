@@ -1,4 +1,5 @@
 <?php
+include_once __DIR__ . "/../helpers/helpers.php";
 include "../config/database.php";
 include_once __DIR__ ."/../validators/input-validators.php";
 
@@ -14,11 +15,16 @@ if (hasNumber($nomeCompleto)) {
 $sql = "UPDATE client SET primeiro_nome=?, ultimo_nome=?, telefone=? WHERE client_id=?";
 
 $qmanager_stmt = $qmanager->prepare($sql);
+$primeiroNome = ucfirst($_POST['primeiro_nome']);
+$ultimoNome = ucfirst($_POST['ultimo_nome']);
+$email = strtolower($_POST['email']);
+$telefone = addString($_POST['telefone'], '+244'); 
+
 
 $qmanager_stmt->bind_param("sssi",
-    $_POST['primeiro_nome'],
-    $_POST['ultimo_nome'],
-    $_POST['telefone'],
+    $primeiroNome,
+    $ultimoNome,
+    $telefone,
     $_POST['id']
 );
 

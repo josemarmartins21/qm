@@ -188,8 +188,14 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`user_id`, `primeiro_nome`, `ultimo_nome`, `email`, `password`, `is_adm`) VALUES
-(1, 'Alberto', 'skua', 'skua@gmail.com', '$2y$10$RhzquAV4E9qz1IAqLNHgW.Yd9aKNnfn8pLsZtaLdeujaNDbcego3e', 1),
-(2, 'Ana', 'Paula', 'paula@gmail.com', '$2y$10$.byow3FNRDbR0XwbKmODP.Ppa2Kyfol4ye27R8Up0z5H1ehNr7rcy', 0);
+(1, 'Pedro', 'Jorge', 'pedro@email.com', '$2y$12$j/slZvlKj90r4ayA6sckT.X6uHMLJfAtyb1khqBxp/nyzIi8lJOEe', 1),
+(2, 'Adão', 'Neto', 'adao@email.com', '$2y$12$j/slZvlKj90r4ayA6sckT.X6uHMLJfAtyb1khqBxp/nyzIi8lJOEe', 1),
+(3, 'Jolirio', 'Ngoio', 'jolirio@email.com', '$2y$12$j/slZvlKj90r4ayA6sckT.X6uHMLJfAtyb1khqBxp/nyzIi8lJOEe', 1),
+(4, 'Loureço', 'Domingos', 'lourenco@email.com', '$2y$12$j/slZvlKj90r4ayA6sckT.X6uHMLJfAtyb1khqBxp/nyzIi8lJOEe', 1),
+(5, 'Josimar', 'Martins', 'josemar@email.com', '$2y$12$j/slZvlKj90r4ayA6sckT.X6uHMLJfAtyb1khqBxp/nyzIi8lJOEe', 1),
+(6, 'Cristiano', 'Madaleno', 'cristiano@email.com', '$2y$12$j/slZvlKj90r4ayA6sckT.X6uHMLJfAtyb1khqBxp/nyzIi8lJOEe', 0);
+
+
 
 -- --------------------------------------------------------
 
@@ -253,6 +259,27 @@ ALTER TABLE `faturas`
 --
 -- Indexes for table `historico_de_assinaturas`
 --
+/** ==========================================================*/
+ALTER TABLE faturas
+drop column client_id;
+
+ALTER TABLE faturas
+drop index faturas_ibfk_6;
+
+show create table faturas;
+
+ALTER TABLE faturas
+ADD client_id int null;
+
+ALTER TABLE faturas
+drop client_id;
+
+ALTER TABLE faturas 
+ADD FOREIGN KEY (client_id) REFERENCES client(client_id) ON DELETE set null
+ON UPDATE set null;
+/* =============================*/
+
+
 ALTER TABLE `historico_de_assinaturas`
   ADD PRIMARY KEY (`historico_id`),
   ADD KEY `fk_hist_cliente` (`client_client_id`),

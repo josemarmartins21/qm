@@ -1,4 +1,6 @@
 <?php
+
+include_once __DIR__ . "/../helpers/helpers.php";
 include __DIR__ ."/../config/database.php";
 include_once __DIR__ ."/../validators/input-validators.php";
 
@@ -24,11 +26,17 @@ VALUES (?, ?, ?, ?, ?)";
 
 $qmanager_registo = $qmanager->prepare($sql);
 
+
+$primeiroNome = ucfirst($_POST['primeiro_nome']);
+$ultimoNome = ucfirst($_POST['ultimo_nome']);
+$email = strtolower($email);
+$telefone = addString($_POST['telefone'], '+244'); 
+
 $qmanager_registo->bind_param(
     "sssss",
-    $_POST['primeiro_nome'],
-    $_POST['ultimo_nome'],
-    $_POST['telefone'],
+    $primeiroNome,
+    $ultimoNome,
+    $telefone,
     $email,
     $password_hash
 );

@@ -169,24 +169,6 @@ $current_dir  = basename(dirname($_SERVER['PHP_SELF']));
                     <span>Painel</span>
                 </a>
             </li>
-            <li class="nav-item">
-                <a href="../client_portal/plano.php" class="nav-link">
-                    <i class="bi bi-tags-fill"></i>
-                    <span>Planos</span>
-                </a>
-            </li>
-            <li class="nav-item">
-                <a href="../profile/index.php" class="nav-link">
-                    <i class="bi bi-person-circle"></i>
-                    <span>Meu Perfil</span>
-                </a>
-            </li>
-            <li class="nav-item">
-                <a href="../client_portal/menu.php" class="nav-link">
-                    <i class="bi bi-gear-fill"></i>
-                    <span>Configurações</span>
-                </a>
-            </li>
         </ul>
     </div>
 

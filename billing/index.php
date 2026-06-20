@@ -14,9 +14,6 @@ $result = $qmanager->query($sql);
     <h4 class="fw-bold m-0">
         <i class="bi bi-receipt me-2"></i>Faturas
     </h4>
-    <a href="create.php" class="btn btn-primary">
-        <i class="bi bi-plus-lg me-1"></i>Nova Fatura
-    </a>
 </div>
 
 <div class="card shadow-sm border-0">
@@ -75,20 +72,6 @@ $result = $qmanager->query($sql);
                                    title="Imprimir Fatura"
                                    target="_blank">
                                     <i class="bi bi-printer"></i>
-                                </a>
-                                
-                                <!-- PDF -->
-                                <a href="pdf_fatura.php?id=<?= $f['fatura_id'] ?>" 
-                                   class="btn btn-outline-danger btn-sm" 
-                                   title="Baixar PDF">
-                                    <i class="bi bi-file-earmark-pdf"></i>
-                                </a>
-                                
-                                <!-- BAIXAR -->
-                                <a href="download_fatura.php?id=<?= $f['fatura_id'] ?>" 
-                                   class="btn btn-outline-success btn-sm" 
-                                   title="Baixar Dados">
-                                    <i class="bi bi-download"></i>
                                 </a>
                                 
                                 <!-- PAGAR -->
